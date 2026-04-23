@@ -87,7 +87,7 @@ def load_cloud_data():
         return None, "Supabase credentials not configured."
 
     try:
-        response = client.table("dealership_database").select("*").range(0, 4999).execute()
+        response = client.table("cars").select("*").range(0, 4999).execute()
         data = response.data or []
         return normalize_inventory_schema(pd.DataFrame(data)), ""
     except Exception as exc:
